@@ -19,3 +19,15 @@ export async function signInRequest(data: signInRequestData) {
     }
   };
 };
+
+export async function recoverUserInformation() {
+  await delay();
+
+  return {
+    user: {
+      name: 'Rafael Almendra',
+      email: 'rafael@gmail.com',
+      avatar_url: 'https://github.com/Rafaelalmendra.png',
+    }
+  };
+};

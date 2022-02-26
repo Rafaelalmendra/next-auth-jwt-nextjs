@@ -1,16 +1,20 @@
-import { Fragment } from 'react'
-import Head from 'next/head'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
+import Head from 'next/head';
+import { Fragment, useContext } from 'react';
+import { AuthContext } from '../context/AuthContext';
 
-const navigation = ['Dashboard', 'Team', 'Projects', 'Calendar', 'Reports']
-const profile = ['Your Profile', 'Settings']
+import { Disclosure, Menu, Transition } from '@headlessui/react';
+import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline';
+
+const navigation = ['Dashboard', 'Team', 'Projects', 'Calendar', 'Reports'];
+const profile = ['Your Profile', 'Settings'];
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
+  return classes.filter(Boolean).join(' ');
+};
 
 export default function Dashboard() {
+  const { user } = useContext(AuthContext);
+
   return (
     <div>
       <Head>
@@ -69,7 +73,7 @@ export default function Dashboard() {
                               <span className="sr-only">Open user menu</span>
                               <img
                                 className="h-8 w-8 rounded-full"
-                                src="https://github.com/diego3g.png"
+                                src={user?.avatar_url}
                                 alt=""
                               />
                             </Menu.Button>
@@ -158,7 +162,7 @@ export default function Dashboard() {
                   <div className="flex-shrink-0">
                     <img
                       className="h-10 w-10 rounded-full"
-                      src="https://github.com/diego3g.png"
+                      src={user?.avatar_url}
                       alt=""
                     />
                   </div>
@@ -209,5 +213,5 @@ export default function Dashboard() {
         </div>
       </main>
     </div>
-  )
-}
+  );
+};
